@@ -1,25 +1,27 @@
 ﻿using Eplan.EplApi.ApplicationFramework;
 using Eplan.EplApi.Scripting;
 
-// Goal:
-// Execute report updating for project
+// Objetivo:
+// Ejecutar la actualización de informes para el proyecto
 
-// Run script in Eplan using [Utilities]>[Scripts]>[Run]
-// Then choose the file from the file location. 
-// The file will be a .cs extension.
+// Para ejecutar este script en Eplan:
+// 1. Ve a [Utilidades] > [Scripts] > [Ejecutar]
+// 2. Luego elige este archivo desde su ubicación. 
+// 3. El archivo tendrá una extensión .cs
 
 public class Class
 {
+    // Esta etiqueta [Start] indica que esta función es el punto de entrada del script para Eplan
     [Start]
     public void Function()
     {
+        // Creamos un nuevo intérprete de línea de comandos
+        // Esto nos permite ejecutar comandos de EPLAN
         CommandLineInterpreter oCLI = new CommandLineInterpreter();
-
+        // Ejecutamos el comando "reports" que actualiza los informes
         oCLI.Execute("reports");
-
+        // Terminamos la función
         return;
     }
 }
-
-
 

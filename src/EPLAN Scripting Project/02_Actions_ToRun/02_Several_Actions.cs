@@ -2,30 +2,33 @@
 using Eplan.EplApi.ApplicationFramework;
 using Eplan.EplApi.Scripting;
 
-// Goal:
-// Execute multiple actions in a project
-// 1: This is used to check a project that it is correct
-// 2: Update reports for project
-// 3: Run Actionname (from Folder 01 - Declare Action)
+// Objetivo:
+// Ejecutar múltiples acciones en un proyecto
+// 1: Esto se usa para verificar que el proyecto sea correcto
+// 2: Actualiza informes para el proyecto
+// 3: Ejecutar una acción personalizada llamada "Actionname"
 
-// Run script in Eplan using [Utilities]>[Scripts]>[Run]
-// Then choose the file from the file location. 
-// The file will be a .cs extension.
+// Para ejecutar este script en Eplan:
+// 1. Ve a [Utilidades] > [Scripts] > [Ejecutar]
+// 2. Luego elige este archivo desde su ubicación. 
+// 3. El archivo tendrá una extensión .cs
 
 public class Class
 {
     [Start]
     public void Function()
     {
+        // Creamos un nuevo intérprete de línea de comandos
         CommandLineInterpreter oCLI = new CommandLineInterpreter();
-
+        // Ejecutamos tres comandos diferentes:
+        // 1. Verifica el proyecto
         oCLI.Execute("XMsgActionStartVerification");
+        // 2. Actualiza los informes
         oCLI.Execute("reports");
-        oCLI.Execute("Actionname");
+        // 3. Ejecuta una acción personalizada llamada "NombreAccion"
+        oCLI.Execute("NombreAccion");
 
         return;
     }
 }
-
-
 

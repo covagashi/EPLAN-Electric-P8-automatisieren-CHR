@@ -1,32 +1,35 @@
 ﻿using Eplan.EplApi.ApplicationFramework;
 using Eplan.EplApi.Scripting;
 
-// Goal:
-// Execute an action in a project using a user input
-// When ran, if you select a text property, the font size will be formatted to 20
-// This can be ran by selecting the text and then running script
-// or running script and then selecting text
+// Objetivo:
+// Ejecutar una acción en un proyecto utilizando una entrada del usuario
+// Cuando se ejecuta, si seleccionas una propiedad de texto, el tamaño de la fuente se formateará a 20
+// Esto se puede ejecutar seleccionando el texto y luego ejecutando el script
 
-// Run script in Eplan using [Utilities]>[Scripts]>[Run]
-// Then choose the file from the file location. 
-// The file will be a .cs extension.
+
+// Para ejecutar este script en Eplan:
+// 1. Ve a [Utilidades] > [Scripts] > [Ejecutar]
+// 2. Luego elige este archivo desde su ubicación. 
+// 3. El archivo tendrá una extensión .cs
 
 public class Class
 {
     [Start]
     public void Function()
     {
+        // Creamos un nuevo intérprete de línea de comandos
         CommandLineInterpreter oCLI = new CommandLineInterpreter();
+        // Creamos un nuevo contexto para llamar a la acción
         ActionCallingContext acc = new ActionCallingContext();
-
+        // Añadimos parámetros a la acción:
+        // El nombre de la acción es "XGedIaFormatText"
         acc.AddParameter("Name", "XGedIaFormatText");
+        // El tamaño de la fuente será 20 (en EPLAN, 1 unidad = 20 puntos)
         acc.AddParameter("height", "1");
-
+        // Ejecutamos la acción que permite al usuario interactuar
         oCLI.Execute("XGedStartInteractionAction", acc);
 
         return;
     }
 }
-
-
 
